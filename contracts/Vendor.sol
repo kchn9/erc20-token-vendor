@@ -12,6 +12,8 @@ contract Vendor is Ownable {
 
     /// @notice Emitted whenever user buy tokens successfully
     event BuyTokens(address buyer, uint256 amountOfETH, uint256 amountOfTokens);
+    /// @notice Emitted whenever user buy tokens successfully
+    event SellTokens(address seller, uint256 amountofETH, uint256 amountOfTokens);
 
     /// @notice Amount of tokens user may buy for 1ETH, 1 ETH = 100 tokens - represented in 10^18 interger of 18 decimals
     uint256 constant public tokensPerEth = 100;
@@ -31,6 +33,7 @@ contract Vendor is Ownable {
     }
 
     /// @notice Buys tokens for fixed price
+    /// @dev Emits BuyTokens(address, uint256, uint256) if successful
     function buyToken() payable public {
         require(msg.value >= 1 ether / tokensPerEth, "Vendor: msg.value - not sufficient funds"); 
         uint256 amountOfTokens_ = msg.value * tokensPerEth;
@@ -41,6 +44,24 @@ contract Vendor is Ownable {
 
     receive() payable external {
         buyToken();
+    }
+
+    /**
+     * @notice Sells allowed[!] amount of token - user need to call ERC20.approve(spender, amount) before selling!
+     * @param _tokenAmount Amount of tokens to sell
+     */
+    function sellToken(uint256 _tokenAmount) public {
+        require(_tokenAmount > 0, "Vendor: Amount cannot be 0");
+
+        uint256 tokenValue = _tokenAmount * 1 ether;
+        uint256 ethValue = tokenValue / tokensPerEth;
+        require(ethValue <= address(this).balance, "Vendor: contract has not enough funds");
+
+        bool transferSuccess = token.transferFrom(msg.sender, address(this), tokenValue);
+        require(transferSuccess, "Vendor: Token transfer failed");
+
+        payable(msg.sender).transfer(ethValue);
+        emit SellTokens(msg.sender, ethValue, tokenValue);
     }
 
     /// @notice Withdraws paid funds
