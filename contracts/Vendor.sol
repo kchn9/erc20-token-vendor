@@ -4,9 +4,13 @@ pragma solidity ^0.8.0;
 import "./ERC20Token.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+/**
+ * Vendor contract that implements possibility to exhange ETH for any ERC20
+ * @author kchn9
+ */
 contract Vendor is Ownable {
 
-    /// @notice 
+    /// @notice Emitted whenever user buy tokens successfully
     event BuyTokens(address buyer, uint256 amountOfETH, uint256 amountOfTokens);
 
     /// @notice Amount of tokens user may buy for 1ETH, 1 ETH = 100 tokens - represented in 10^18 interger of 18 decimals
