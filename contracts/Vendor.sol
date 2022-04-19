@@ -23,10 +23,14 @@ contract Vendor is Ownable {
     /// @notice Amount of tokens user may buy for 1ETH, 1 ETH = 100 tokens - represented in 10^18 interger of 18 decimals
     uint256 constant public tokensPerEth = 100;
 
-    /// @notice Buys 
+    /// @notice Buys tokens for fixed price
     function buyToken() payable public {
         require(msg.value >= 1 ether / tokensPerEth, "Vendor: msg.value - not sufficient funds"); 
         uint256 amountOfTokens_ = msg.value * tokensPerEth;
         token.transfer(msg.sender, amountOfTokens_);
+    }
+
+    receive() payable external {
+        buyToken();
     }
 }
