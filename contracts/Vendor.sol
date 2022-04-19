@@ -6,6 +6,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Vendor is Ownable {
 
+    /// @notice 
+    event BuyTokens(address buyer, uint256 amountOfETH, uint256 amountOfTokens);
+
+    /// @notice Amount of tokens user may buy for 1ETH, 1 ETH = 100 tokens - represented in 10^18 interger of 18 decimals
+    uint256 constant public tokensPerEth = 100;
+
     /// @notice Token ABI representation
     ERC20Token token;
 
@@ -20,17 +26,21 @@ contract Vendor is Ownable {
         token = ERC20Token(_tokenAddress);
     }
 
-    /// @notice Amount of tokens user may buy for 1ETH, 1 ETH = 100 tokens - represented in 10^18 interger of 18 decimals
-    uint256 constant public tokensPerEth = 100;
-
     /// @notice Buys tokens for fixed price
     function buyToken() payable public {
         require(msg.value >= 1 ether / tokensPerEth, "Vendor: msg.value - not sufficient funds"); 
         uint256 amountOfTokens_ = msg.value * tokensPerEth;
-        token.transfer(msg.sender, amountOfTokens_);
+        bool success = token.transfer(msg.sender, amountOfTokens_);
+        require(success, "Vendor: Token transfer failed");
+        emit BuyTokens(msg.sender, msg.value, amountOfTokens_);
     }
 
     receive() payable external {
         buyToken();
+    }
+
+    /// @notice Withdraws paid funds
+    function withdraw() public onlyOwner {
+        payable(owner()).transfer(address(this).balance);
     }
 }
