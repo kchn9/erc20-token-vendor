@@ -1,0 +1,83 @@
+{
+  "contractName": "ERC20Token",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ERC20Token.sol\":\"ERC20Token\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/ERC20Token.sol\":{\"keccak256\":\"0xbc5d4347001972d29eb2b1cc5794865a6acccb28b4d6e0bdeab7ce215eec7e26\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://279319a7793889ade7245dd7ffdf15460df3ed57c04a8951b8b3af355bec8864\",\"dweb:/ipfs/QmSr8ybByE79xuVy2dRYKHVcxz4redotBEcdowkGQ5E6fH\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122036d6387622e27514cc2e0a9959635641f9ba68c17b894fc844b8f15d00ed8f1e64736f6c634300080d0033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122036d6387622e27514cc2e0a9959635641f9ba68c17b894fc844b8f15d00ed8f1e64736f6c634300080d0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "57:24:0:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "57:24:0:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract ERC20Token {\n\n}",
+  "sourcePath": "/Users/matkuch/Code/erc20-token-vendor/contracts/ERC20Token.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/ERC20Token.sol",
+    "exportedSymbols": {
+      "ERC20Token": [
+        2
+      ]
+    },
+    "id": 3,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ERC20Token",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "ERC20Token",
+        "nameLocation": "66:10:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "57:24:0",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:49:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xb0aD993DE8783Ab2afFFdBFD25FCa9F7E4d27241",
+      "transactionHash": "0x2a9ec039f20360b4a518384779f9f2b9560cd43a167ca3a944cd2f2e0f625b81"
+    }
+  },
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-04-19T09:09:40.650Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
