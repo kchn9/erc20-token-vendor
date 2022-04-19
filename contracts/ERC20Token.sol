@@ -7,7 +7,11 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
  * @author kchn9
  */
 contract ERC20Token is ERC20 {
-    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
-        _mint(msg.sender, 1000 * (10 ** 18)); // Mint 1000 example tokens
+    constructor(
+        string memory _name, 
+        string memory _symbol, 
+        uint256 _tokenAmount
+    ) ERC20(_name, _symbol) {
+        _mint(msg.sender, _tokenAmount * (10 ** 18));
     }
 }
